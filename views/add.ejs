@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./inc/head.ejs')%> 
+</head>
+<body>
+    <%-include('./inc/nav.ejs')%> 
+    <section>
+        <form action="/admin/add" method="POST">
+            <h3>Başlık: </h3><input type="text" name="title" placeholder="Başlık" required>
+            <h3>Kısa acıklama: </h3><textarea type="text" name="short" placeholder="Kısa acıklama" rows="2" cols="20" required></textarea>
+            <h3>İçerik: </h3><textarea type="text" name="long" placeholder="İçerik" rows="8" cols="20" required></textarea>
+            <input type="submit" value="Kaydet">
+        </form>
+    </section>
+</body>
+</html>

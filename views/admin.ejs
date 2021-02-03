@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('./inc/head.ejs')%> 
+</head>
+<body>
+    <%-include('./inc/nav.ejs')%> 
+    <section>
+        <a href="/admin/add">Yeni yazi ekle!</a>
+        <h1>Yazılar</h1>
+        <ul>
+            <% blogs.forEach(blog=>{%>
+                <li>
+                    <p><%=blog.title%></p>
+                    <a class="del" data-doc="<%=blog._id%> "><button>Sil</button></a>
+                </li>
+            <% })  %> 
+        </ul>
+    </section>
+    <script>
+        //bütün a.del leri seçiyoruz ama nodelist
+        const del = document.querySelectorAll('a.del')
+        //nodelisti normal arraye ceviriyoruz
+        const delLinks = [].slice.call(del)
+        //foreach ile hepsine event listener ekliyorum
+
+        delLinks.forEach(item => {
+            item.addEventListener('click',(e)=>{
+                //tıkladığımda bi endpoint oluşturuyorum 
+            const endpoint = `/admin/delete/${item.dataset.doc}`
+                //fetch ile endpoint'imize methodu delete olan bir istek olusturuyoruz
+            fetch(endpoint,{
+                method: 'DELETE'
+            })
+            //gelen cevabı json olarak alıyoruz
+            .then(response=>response.json())
+            //bi üst satırdaki json olarak aldıgımızı data olarak alıp
+            //işlem gerçekleşince app'ten gelen linki alıp window.location ile o linke yönlendiriyorum
+            .then(data => window.location.href = data.link)
+            //hata durumunda:
+            .catch(err=>console.log(err))
+
+        })
+            
+        });
+
+    </script>
+</body
+</html>
