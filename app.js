@@ -15,7 +15,7 @@ const { response } = require("express");
 
 //mongodb bağlantı url
 const dbURL =
-  "mongodb+srv://neco:asd123@nodeblog.kjiy5.mongodb.net/node-blog?retryWrites=true&w=majority";
+  "PRIVATE KEY :)";
 
 //mongoose ile mongodb db'mize bağlanıyoruz
 //.then .catch ile bağlantı başarılı mı değil mi kontrolü
